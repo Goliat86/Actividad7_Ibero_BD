@@ -1,0 +1,83 @@
+.contform{
+    background-image: linear-gradient(to top, #5db7ef 0%, #031e2d 100%);
+    width: 100%;
+    height: auto;
+   
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 30px;
+    
+   
+    border: 1px solid rgb(0, 179, 255);
+    box-shadow: 0px 10px 20px 5px rgba(5, 31, 56, 0.586);
+}
+
+
+.contac{
+    background-image: linear-gradient(rgb(104, 106, 107),rgba(130, 123, 123, 0.349), rgb(102, 114, 122)),url(img/form.jpg);
+    
+     
+    padding: 30px;
+    margin: 20px auto;
+    width: 400px;
+    box-shadow: 0 0 10px 3px rgb(2, 13, 40);
+    border: 10px solid unset rgb(58, 55, 55);
+    font-family:'Times New Roman', Times, serif;
+    color: rgb(204, 194, 194);
+    
+    
+    
+    
+    border-radius: 30px;
+    
+}
+h3{
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+.datos{
+    width: 100%;
+    background: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    border: 1px solid rgb(0, 162, 255);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    color: white;
+    
+    
+}
+.contac p{
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+   
+        
+}
+.contac a{
+    color: rgb(0, 162, 255);
+    text-decoration: none;
+}
+.contac a:hover{
+    color: rgb(0, 162, 255);
+    text-decoration: underline;
+    
+
+}
+.contac .reg{
+    width: 100%;
+    background:#6e7277  ;
+    padding: 12px;
+    border: none;
+    margin: 0px 0px 10px;
+    color: white;
+    font-size: 16px;
+    border-radius: 20px;
+}
+.reg:hover{
+    background-image: linear-gradient(45deg, #33383a 0%, #1d1d1f 100%);
+    box-shadow: inset 6px 6px 20px rgb(47, 47, 52) ;
+    border-color: #00e5ff;
+
+}

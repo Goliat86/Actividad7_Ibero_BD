@@ -1,0 +1,116 @@
+var ModelUsuarios = {}
+const mongoose = require('mongoose')
+module.exports.usuarios = ModelUsuarios
+const Schema = mongoose.Schema
+var UserSchema = Schema({
+    cedula: Number,
+    nombre: String,
+    apellido: String,
+    direccion: String,
+    telefono: Number,
+    edad: Number,
+    estadocivil: String
+})
+const MyModel = mongoose.model('Usuarios0', UserSchema)
+
+
+ModelUsuarios.Guardar = function (post, callback) {
+
+
+    const instancia = new MyModel
+    instancia.cedula = post.cedula
+    instancia.nombre = post.name
+    instancia.apellido = post.apellido
+    instancia.direccion = post.direccion
+    instancia.telefono = post.telefono
+    instancia.edad = post.edad
+    instancia.estadocivil = post.estadocivil
+
+    instancia.save((error, UserCreate) => {
+        if (error) {
+            console.log(error)
+            return callback({ state: false, mensaje: error })
+        }
+        else {
+            console.log(UserCreate)
+            return callback({ state: true, mensaje: UserCreate })
+        }
+    })
+    // datos.push({
+    //     cedula:         post.cedula,
+    //     nombre:         post.name,
+    //     apellido:       post.apellido,
+    //     direccion:      post.direccion,
+    //     telefono:       post.telefono,
+    //     edad:           post.edad,
+    //     estadocivil:    post.estadocivil
+    // })
+    // return callback({state:true,mensaje:"usuario guardado"})
+}
+
+
+ModelUsuarios.ListarUsuarios = function (post, callback) {
+    // return callback({state:true,datos:datos})
+    MyModel.find({}, { _id: 1, cedula: 1, nombre: 1, apellido: 1, direccion: 1, telefono: 1, edad: 1, estadocivil: 1 }, (error, documentos) => {
+        if (error) {
+            return callback({ state: false, mensaje: error })
+        }
+        else {
+            return callback({ state: true, mensaje: 'lista usuarios', data: documentos })
+        }
+    })
+}
+
+ModelUsuarios.ActualizarPorCedula = function (post, callback) {
+    // datos[post.posicion].direccion = post.direccion
+    // datos[post.posicion].telefono = post.telefono
+    // datos[post.posicion].edad = post.edad
+    // datos[post.posicion].estadocivil = post.estadocivil
+    // return callback({state:true,mensaje:"Se actualizó correctamente"})
+
+    MyModel.find({ cedula: post.cedula }, {}, (error, documentos) => {
+
+        if (error) {
+            return callback({ state: false, mensaje: error })
+        }
+        else {
+            if (documentos.length > 0) {
+                MyModel.findByIdAndUpdate(documentos[0]._id,{
+                    direccion: post.direccion,
+                    telefono: post.telefono,
+                    edad: post.edad,
+                    estadocivil: post.estadocivil
+                }, (error, usuariomodificado) => {
+                    if (error) {
+                        console.log(error)
+                        return callback({ state: false, mensaje: error })
+                    }
+                    else {
+                        return callback({ state: true, mensaje: 'Usuario modificado', data: usuariomodificado })
+                    }
+                })
+            }
+            else {
+                return callback({ state: false, mensaje: 'La Cedula no existe' })
+            }
+            // return callback({cantidad:documentos.length})
+        }
+    })
+
+
+}
+
+ModelUsuarios.EliminarPorCedula = function (post, callback) {
+    // datos.splice(posicion, 1)
+    // return callback({ state: true, mensaje: "Se eliminó correctamente" })
+
+    MyModel.findByIdAndDelete(post.id,(error,eliminado)=>{
+        if(error){
+            return callback({state:false,mensaje:error})
+        }
+        else{
+            return callback({state:true,mensaje:'Usuario eliminado'})
+        }
+    })
+}
+
