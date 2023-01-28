@@ -40,7 +40,7 @@ const { config } = require('./config');
     }))
 
 
-    mongoose.connect('mongodb://127.0.0.1:27017/' + config.db,{useNewUrlParser:true,useUnifiedTopology:true},(error,response)=>{
+    mongoose.connect('mongodb://127.0.0.1:27017/' + config.bd,{useNewUrlParser:true,useUnifiedTopology:true},(error,response)=>{
         if (error){
             console.log(error)
         }

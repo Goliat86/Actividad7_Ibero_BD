@@ -11,7 +11,7 @@ var UserSchema = Schema({
     edad: Number,
     estadocivil: String
 })
-const MyModel = mongoose.model('Usuarios0', UserSchema)
+const MyModel = mongoose.model('Usuarios', UserSchema)
 
 
 ModelUsuarios.Guardar = function (post, callback) {
